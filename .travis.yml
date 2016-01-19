@@ -9,7 +9,8 @@ bundler_args: --without system_tests
 matrix:
   include:
   - rvm: default
-    env: LINT=metadata
+    env: LINT=m
+    etadata
     dist: trusty
     bundler_args:
     script: bundle exec rake metadata_lint
