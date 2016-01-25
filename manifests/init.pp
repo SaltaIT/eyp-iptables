@@ -1,7 +1,7 @@
 class iptables  (
                   $ensure ='running',
                   $enable=true
-                ) inherits params {
+                ) inherits iptables::params {
 
   package { $iptables::params::iptables_pkgs:
     ensure => 'installed',
