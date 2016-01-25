@@ -3,6 +3,8 @@ describe 'iptables' do
 
   context 'CentOS 5' do
 
+    let (:params) { { 'ensure' => 'running', 'enable' => 'true' } }
+
     let :facts do
     {
       :osfamily => 'RedHat',
@@ -28,6 +30,8 @@ describe 'iptables' do
 
   context 'CentOS 6' do
 
+    let (:params) { { 'ensure' => 'running', 'enable' => 'true' } }
+
     let :facts do
     {
       :osfamily => 'RedHat',
@@ -52,6 +56,8 @@ describe 'iptables' do
   end
 
   context 'CentOS 7' do
+
+    let (:params) { { 'ensure' => 'running', 'enable' => 'true' } }
 
     let :facts do
     {
