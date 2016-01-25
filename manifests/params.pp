@@ -8,9 +8,15 @@ class iptables::params
       {
         /^5.*$/ :
         {
+          $iptables_pkgs= [ 'iptables' ]
         }
         /^6.*$/ :
         {
+          $iptables_pkgs= [ 'iptables' ]
+        }
+        /^7.*$/ :
+        {
+          $iptables_pkgs= [ 'iptables', 'iptables-services' ]
         }
         default :
         {
