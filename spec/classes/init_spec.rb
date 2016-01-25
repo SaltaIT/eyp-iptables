@@ -98,8 +98,6 @@ describe 'iptables' do
     let :facts do
     {
       :osfamily => 'Debian',
-      :operatingsystem => 'Ubuntu',
-      :operatingsystemrelease => '14.0',
     }
     end
 
