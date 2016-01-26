@@ -94,7 +94,7 @@ describe 'iptables' do
     }
   end
 
-  context 'unsupported OS' do
+  context 'unsupported Debian' do
     let :facts do
     {
       :osfamily => 'Debian',
