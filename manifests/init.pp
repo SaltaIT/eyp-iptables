@@ -13,13 +13,12 @@ class iptables  (
     group   => 'root',
     mode    => '0600',
     content => template("${module_name}/sysconfig.erb"),
-    notify  => Service['iptables'],
+    notify  => Class['iptables::service'],
   }
 
-  service { 'iptables':
-    ensure  => $ensure,
-    enable  => $enable,
-    require => Package[$iptables::params::iptables_pkgs],
+  class { 'iptables::service':
+    ensure => $ensure,
+    enable => $enable,
   }
 
 }
