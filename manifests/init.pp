@@ -1,6 +1,8 @@
 class iptables  (
                   $ensure ='running',
-                  $enable=true
+                  $enable=true,
+                  $manage_docker_service=false,
+                  $manage_service=true,
                 ) inherits iptables::params {
 
   package { $iptables::params::iptables_pkgs:
@@ -17,8 +19,10 @@ class iptables  (
   }
 
   class { 'iptables::service':
-    ensure => $ensure,
-    enable => $enable,
+    ensure                => $ensure,
+    enable                => $enable,
+    manage_docker_service => $manage_docker_service,
+    manage_service        => $manage_service,
   }
 
 }
