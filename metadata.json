@@ -1,6 +1,6 @@
 {
   "name": "eyp-iptables",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "author": "eyp",
   "summary": "disables iptables with a fixed template (no filters)",
   "license": "Apache-2.0",
