@@ -9,6 +9,8 @@ class iptables::service (
   validate_bool($manage_service)
   validate_bool($enable)
 
+  validate_re($ensure, [ '^running$', '^stopped$' ], "Not a valid daemon status: ${ensure}")
+
   if($eyp_docker_iscontainer==undef or
     $eyp_docker_iscontainer==false or
     $eyp_docker_iscontainer=~ /false/ or
