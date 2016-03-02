@@ -3,7 +3,7 @@ describe 'iptables' do
 
   context 'CentOS 5' do
 
-    let (:params) { { 'ensure' => 'running', 'enable' => 'true' } }
+    let (:params) { { 'ensure' => 'running', 'enable' => true } }
 
     let :facts do
     {
@@ -30,7 +30,7 @@ describe 'iptables' do
 
   context 'CentOS 6' do
 
-    let (:params) { { 'ensure' => 'running', 'enable' => 'true' } }
+    let (:params) { { 'ensure' => 'running', 'enable' => true } }
 
     let :facts do
     {
@@ -57,7 +57,7 @@ describe 'iptables' do
 
   context 'CentOS 7' do
 
-    let (:params) { { 'ensure' => 'running', 'enable' => 'true' } }
+    let (:params) { { 'ensure' => 'running', 'enable' => true } }
 
     let :facts do
     {
