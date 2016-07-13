@@ -1,6 +1,6 @@
 {
   "name": "eyp-iptables",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "author": "eyp",
   "summary": "disables iptables with a fixed template (no filters)",
   "license": "Apache-2.0",
@@ -34,6 +34,10 @@
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [ "14.04" ]
+    },
+    {
+      "operatingsystem": "SLES",
+      "operatingsystemrelease": [ "11.3" ]
     }
   ]
 }
