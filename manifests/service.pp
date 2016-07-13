@@ -19,7 +19,7 @@ class iptables::service (
   {
     if($manage_service)
     {
-      service { 'iptables':
+      service { $iptables::params::iptables_servicename:
         ensure  => $ensure,
         enable  => $enable,
         require => Package[$iptables::params::iptables_pkgs],
