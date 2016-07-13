@@ -1,17 +1,19 @@
 # iptables
 
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+
 #### Table of Contents
 
 1. [Overview](#overview)
-2. [Module Description - What the module does and why it is useful](#module-description)
-3. [Setup - The basics of getting started with iptables](#setup)
+2. [Module Description](#module-description)
+3. [Setup](#setup)
     * [What iptables affects](#what-iptables-affects)
     * [Setup requirements](#setup-requirements)
     * [Beginning with iptables](#beginning-with-iptables)
-4. [Usage - Configuration options and additional functionality](#usage)
-5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-5. [Limitations - OS compatibility, etc.](#limitations)
-6. [Development - Guide for contributing to the module](#development)
+4. [Usage](#usage)
+5. [Reference](#reference)
+5. [Limitations](#limitations)
+6. [Development](#development)
 
 ## Overview
 
@@ -27,12 +29,14 @@ This module is intended to **disable iptables** by setting an empty rule set (IP
 
 Manages:
 * package
-* service
+* service (**SLES11SP3** disables **SuSEfirewall2**)
 * files:
   * RedHat:
     * /etc/sysconfig/iptables
   * Debian:
     * /etc/iptables/rules.v4
+  * SLES 11 SP 3
+    * does not manage any files
 
 ### Setup Requirements
 
@@ -65,6 +69,7 @@ Tested on:
 * CentOS 6
 * CentOS 7
 * Ubuntu 14.04
+* SLES 11 SP3
 
 
 ## Development
