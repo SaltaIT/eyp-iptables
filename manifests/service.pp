@@ -1,8 +1,8 @@
 class iptables::service (
-                          $ensure='running',
-                          $enable=true,
-                          $manage_docker_service=false,
-                          $manage_service=true,
+                          $ensure                = 'running',
+                          $enable                = true,
+                          $manage_docker_service = false,
+                          $manage_service        = true,
                         ) inherits iptables::params {
 
   validate_bool($manage_docker_service)
