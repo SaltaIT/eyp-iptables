@@ -9,13 +9,14 @@ class iptables  (
     ensure => 'installed',
   }
 
-  file { '/etc/sysconfig/iptables':
+  file { $iptables::params::iptablesrulesetfile:
     ensure  => 'present',
     owner   => 'root',
     group   => 'root',
     mode    => '0600',
     content => template("${module_name}/sysconfig.erb"),
     notify  => Class['iptables::service'],
+    require => Package[$iptables::params::iptables_pkgs],
   }
 
   class { 'iptables::service':
@@ -23,6 +24,10 @@ class iptables  (
     enable                => $enable,
     manage_docker_service => $manage_docker_service,
     manage_service        => $manage_service,
+    require               => [
+                              File[$iptables::params::iptablesrulesetfile],
+                              Package[$iptables::params::iptables_pkgs]
+                              ],
   }
 
 }

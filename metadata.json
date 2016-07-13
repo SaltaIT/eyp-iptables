@@ -1,6 +1,6 @@
 {
   "name": "eyp-iptables",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "author": "eyp",
   "summary": "disables iptables with a fixed template (no filters)",
   "license": "Apache-2.0",
@@ -13,7 +13,7 @@
   "operatingsystem_support": [
     {
       "operatingsystem": "RedHat",
-      "operatingsystemrelease": [ "5", "6" ]
+      "operatingsystemrelease": [ "5", "6", "7" ]
     }
   ]
 }
