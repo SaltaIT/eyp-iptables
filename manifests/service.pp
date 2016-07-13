@@ -1,6 +1,6 @@
 class iptables::service (
-                          $ensure                = 'running',
-                          $enable                = true,
+                          $ensure                = $iptables::params::service_ensure_default,
+                          $enable                = $iptables::params::service_enable_default,
                           $manage_docker_service = false,
                           $manage_service        = true,
                         ) inherits iptables::params {

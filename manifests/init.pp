@@ -1,6 +1,6 @@
 class iptables  (
-                  $ensure                = 'running',
-                  $enable                = true,
+                  $ensure                = $iptables::params::service_ensure_default,
+                  $enable                = $iptables::params::service_enable_default,
                   $manage_docker_service = false,
                   $manage_service        = true,
                 ) inherits iptables::params {
@@ -9,14 +9,18 @@ class iptables  (
     ensure => 'installed',
   }
 
-  file { $iptables::params::iptablesrulesetfile:
-    ensure  => 'present',
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0600',
-    content => template("${module_name}/sysconfig.erb"),
-    notify  => Class['iptables::service'],
-    require => Package[$iptables::params::iptables_pkgs],
+  if($iptables::params::iptablesrulesetfile!=undef)
+  {
+    file { $iptables::params::iptablesrulesetfile:
+      ensure  => 'present',
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0600',
+      content => template("${module_name}/sysconfig.erb"),
+      notify  => Class['iptables::service'],
+      require => Package[$iptables::params::iptables_pkgs],
+      before  => Class['iptables::service'],
+    }
   }
 
   class { 'iptables::service':
@@ -24,10 +28,7 @@ class iptables  (
     enable                => $enable,
     manage_docker_service => $manage_docker_service,
     manage_service        => $manage_service,
-    require               => [
-                              File[$iptables::params::iptablesrulesetfile],
-                              Package[$iptables::params::iptables_pkgs]
-                              ],
+    require               => Package[$iptables::params::iptables_pkgs],
   }
 
 }
