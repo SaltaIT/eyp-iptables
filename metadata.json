@@ -2,7 +2,7 @@
   "name": "eyp-iptables",
   "version": "0.1.7",
   "author": "eyp",
-  "summary": "disables iptables with a fixed template (no filters)",
+  "summary": "disables iptables",
   "license": "Apache-2.0",
   "source": "",
   "project_page": null,
