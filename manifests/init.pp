@@ -5,7 +5,7 @@ class iptables  (
                   $manage_service        = true,
                 ) inherits iptables::params {
 
-  if(!defined(Class['firewalld']))
+  if(!defined(Class['::firewalld']))
   {
     package { $iptables::params::iptables_pkgs:
       ensure => 'installed',
