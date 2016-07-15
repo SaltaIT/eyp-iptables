@@ -5,30 +5,32 @@ class iptables  (
                   $manage_service        = true,
                 ) inherits iptables::params {
 
-  package { $iptables::params::iptables_pkgs:
-    ensure => 'installed',
-  }
-
-  if($iptables::params::iptablesrulesetfile!=undef)
+  if(!defined(Class['firewalld']))
   {
-    file { $iptables::params::iptablesrulesetfile:
-      ensure  => 'present',
-      owner   => 'root',
-      group   => 'root',
-      mode    => '0600',
-      content => template("${module_name}/sysconfig.erb"),
-      notify  => Class['iptables::service'],
-      require => Package[$iptables::params::iptables_pkgs],
-      before  => Class['iptables::service'],
+    package { $iptables::params::iptables_pkgs:
+      ensure => 'installed',
+    }
+
+    if($iptables::params::iptablesrulesetfile!=undef)
+    {
+      file { $iptables::params::iptablesrulesetfile:
+        ensure  => 'present',
+        owner   => 'root',
+        group   => 'root',
+        mode    => '0600',
+        content => template("${module_name}/sysconfig.erb"),
+        notify  => Class['iptables::service'],
+        require => Package[$iptables::params::iptables_pkgs],
+        before  => Class['iptables::service'],
+      }
+    }
+
+    class { 'iptables::service':
+      ensure                => $ensure,
+      enable                => $enable,
+      manage_docker_service => $manage_docker_service,
+      manage_service        => $manage_service,
+      require               => Package[$iptables::params::iptables_pkgs],
     }
   }
-
-  class { 'iptables::service':
-    ensure                => $ensure,
-    enable                => $enable,
-    manage_docker_service => $manage_docker_service,
-    manage_service        => $manage_service,
-    require               => Package[$iptables::params::iptables_pkgs],
-  }
-
 }
