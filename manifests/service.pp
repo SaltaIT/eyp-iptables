@@ -26,6 +26,6 @@ class iptables::service (
           require => Package[$iptables::params::iptables_pkgs],
         }
       }
-    }  
+    }
   }
 }
