@@ -23,6 +23,8 @@ Disable iptables
 
 This module is intended to **disable iptables** by setting an empty rule set (IPv4 only)
 
+To be able to manage logrotate files it needs **eyp-logrotate**
+
 ## Setup
 
 ### What iptables affects
@@ -61,6 +63,12 @@ the fancy stuff with your module here.
 * **enable**: (default: true)
 * **manage_docker_service**: (default: false)
 * **manage_service**: (default: true)
+* **manage_logrotate**: add logrotate config file (default: true)
+* **logrotate_rotate**     = '4',
+* **logrotate_compress**   = true,
+* **logrotate_missingok**  = true,
+* **logrotate_notifempty** = true,
+* **logrotate_frequency**  = 'weekly',
 
 ## Limitations
 
