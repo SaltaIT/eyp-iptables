@@ -38,18 +38,19 @@ class iptables  (
       manage_service        => $manage_service,
       require               => Package[$iptables::params::iptables_pkgs],
     }
+  }
 
-    if($manage_logrotate)
-    {
-      logrotate::logs { 'iptables':
-        ensure        => present,
-        log           => [ '/var/log/iptables.log' ],
-        rotate        => $logrotate_rotate,
-        compress      => $logrotate_compress,
-        missingok     => $logrotate_missingok,
-        notifempty    => $logrotate_notifempty,
-        frequency     => $logrotate_frequency,
-      }
+  if($manage_logrotate)
+  {
+    logrotate::logs { 'iptables':
+      ensure        => present,
+      log           => [ '/var/log/iptables.log' ],
+      rotate        => $logrotate_rotate,
+      compress      => $logrotate_compress,
+      missingok     => $logrotate_missingok,
+      notifempty    => $logrotate_notifempty,
+      frequency     => $logrotate_frequency,
     }
   }
+
 }
