@@ -48,7 +48,7 @@ class iptables  (
         compress      => $logrotate_compress,
         missingok     => $logrotate_missingok,
         notifempty    => $logrotate_notifempty,
-        frequecy      => $logrotate_frequency,
+        frequency     => $logrotate_frequency,
       }
     }
   }
