@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.1.14
+
+* added include for logrotate
+* fixed rspec testing
+
 ## 0.1.12
 
 * apply logrotate config even if it is using firewalld
