@@ -42,6 +42,8 @@ class iptables  (
 
   if($manage_logrotate)
   {
+    include ::logrotate
+
     logrotate::logs { 'iptables':
       ensure     => present,
       log        => [ '/var/log/iptables.log' ],
