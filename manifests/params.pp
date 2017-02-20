@@ -42,7 +42,7 @@ class iptables::params
         {
           case $::operatingsystemrelease
           {
-            /^14.*$/:
+            /^1[46].*$/:
             {
               # per debian
               # http://systemadmin.es/2014/02/reglas-de-iptables-persistentes-en-debian-ubuntu

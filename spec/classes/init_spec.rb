@@ -94,16 +94,4 @@ describe 'iptables' do
     }
   end
 
-  context 'unsupported Debian' do
-    let :facts do
-    {
-      :osfamily => 'Debian',
-    }
-    end
-
-    it {
-      expect { should raise_error(Puppet::Error) }
-    }
-  end
-
 end
