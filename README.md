@@ -31,9 +31,9 @@ Manages:
 * package
 * service (**SLES11SP3** disables **SuSEfirewall2**)
 * files:
-  * RedHat:
+  * RedHat-like:
     * /etc/sysconfig/iptables
-  * Debian:
+  * Debian-like:
     * /etc/iptables/rules.v4
   * SLES 11 SP 3
     * does not manage any files
@@ -75,6 +75,7 @@ Tested on:
 * CentOS 6
 * CentOS 7
 * Ubuntu 14.04
+* Ubuntu 16.04
 * SLES 11 SP3
 
 
