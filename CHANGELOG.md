@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.16
+
+* bugfix Ubuntu 16.04 service
+
 ## 0.1.15
 
 * added Ubuntu 16.04 support
