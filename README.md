@@ -78,7 +78,6 @@ Tested on:
 * Ubuntu 16.04
 * SLES 11 SP3
 
-
 ## Development
 
 We are pushing to have acceptance testing in place, so any new feature must
