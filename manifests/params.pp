@@ -32,7 +32,6 @@ class iptables::params
     'Debian':
     {
       $iptablesrulesetfile = '/etc/iptables/rules.v4'
-      $iptables_servicename = 'iptables-persistent'
 
       $service_ensure_default = 'running'
       $service_enable_default = true
@@ -40,13 +39,16 @@ class iptables::params
       {
         'Ubuntu':
         {
+          $iptables_pkgs = [ 'iptables', 'iptables-persistent' ]
           case $::operatingsystemrelease
           {
-            /^1[46].*$/:
+            /^14.*$/:
             {
-              # per debian
-              # http://systemadmin.es/2014/02/reglas-de-iptables-persistentes-en-debian-ubuntu
-              $iptables_pkgs = [ 'iptables', 'iptables-persistent' ]
+              $iptables_servicename = 'iptables-persistent'
+            }
+            /^16.*$/:
+            {
+              $iptables_servicename = 'netfilter-persistent'
             }
             default: { fail("Unsupported Ubuntu version! - ${::operatingsystemrelease}")  }
           }

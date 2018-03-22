@@ -1,11 +1,11 @@
 {
   "name": "eyp-iptables",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "author": "eyp",
-  "summary": "disables iptables",
+  "summary": "iptables management",
   "license": "Apache-2.0",
   "source": "https://github.com/NTTCom-MS/eyp-iptables",
-  "project_page": null,
+  "project_page": "https://github.com/NTTCom-MS/eyp-iptables",
   "issues_url": "https://github.com/NTTCom-MS/eyp-iptables/issues",
   "dependencies": [
     {"name":"puppetlabs/stdlib","version_requirement":">= 1.0.0"}
@@ -38,6 +38,12 @@
     {
       "operatingsystem": "SLES",
       "operatingsystemrelease": [ "11.3" ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 3.8.0"
     }
   ]
 }
