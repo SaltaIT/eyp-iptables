@@ -9,8 +9,8 @@ when 'RedHat'
   $ruleset = '/etc/sysconfig/iptables'
 when 'Debian'
   $ruleset = '/etc/iptables/rules.v4'
-  case _operatingsystemrelease
-  when /^16/
+  case
+  when _operatingsystemrelease > 16
     $servicename = 'netfilter-persistent'
   else
     $servicename = 'iptables-persistent'
