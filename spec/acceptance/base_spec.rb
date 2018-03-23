@@ -22,12 +22,5 @@ describe 'iptables class' do
       it { is_expected.to be_running }
     end
 
-    describe file($ruleset) do
-      it { should be_file }
-      its(:content) { should contain ':INPUT ACCEPT [0:0]' }
-      its(:content) { should contain ':FORWARD ACCEPT [0:0]' }
-      its(:content) { should contain ':OUTPUT ACCEPT [0:0]' }
-    end
-
   end
 end
