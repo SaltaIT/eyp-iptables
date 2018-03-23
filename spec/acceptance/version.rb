@@ -5,12 +5,17 @@ _operatingsystemrelease = fact('operatingsystemrelease').to_f
 
 case _osfamily
 when 'RedHat'
-  $examplevar = 'valrh'
-
+  $servicename = 'iptables'
+  $ruleset = '/etc/sysconfig/iptables'
 when 'Debian'
-  $examplevar = 'valdeb'
-
+  $ruleset = '/etc/iptables/rules.v4'
+  case _operatingsystemrelease
+  when /^16.*$/:
+    $servicename = 'netfilter-persistent'
+  else
+    $servicename = 'iptables-persistent'
+  end
 else
-  $examplevar = '-_-'
-
+  $ruleset = '-_-'
+  $servicename = '-_-'
 end
