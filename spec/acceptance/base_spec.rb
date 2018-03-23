@@ -24,9 +24,9 @@ describe 'iptables class' do
 
     describe file($ruleset) do
       it { should be_file }
-      its(:content) { should match /:INPUT ACCEPT [0:0]/ }
-      its(:content) { should match /:FORWARD ACCEPT [0:0]/ }
-      its(:content) { should match /:OUTPUT ACCEPT [0:0]/ }
+      its(:content) { should contain ':INPUT ACCEPT [0:0]' }
+      its(:content) { should contain ':FORWARD ACCEPT [0:0]' }
+      its(:content) { should contain ':OUTPUT ACCEPT [0:0]' }
     end
 
   end
