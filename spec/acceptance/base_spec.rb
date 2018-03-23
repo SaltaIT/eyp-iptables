@@ -19,7 +19,6 @@ describe 'iptables class' do
 
     describe service($servicename) do
       it { should be_enabled }
-      it { is_expected.to be_running }
     end
 
   end
