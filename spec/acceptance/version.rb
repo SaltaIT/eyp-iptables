@@ -10,7 +10,7 @@ when 'RedHat'
 when 'Debian'
   $ruleset = '/etc/iptables/rules.v4'
   case _operatingsystemrelease
-  when /16.04/
+  when /^16/
     $servicename = 'netfilter-persistent'
   else
     $servicename = 'iptables-persistent'
