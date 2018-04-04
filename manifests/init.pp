@@ -9,6 +9,9 @@ class iptables  (
                   $logrotate_missingok   = true,
                   $logrotate_notifempty  = true,
                   $logrotate_frequency   = 'weekly',
+                  $default_input         = 'ACCEPT',
+                  $default_forward       = 'ACCEPT',
+                  $default_output        = 'ACCEPT',
                 ) inherits iptables::params {
 
   if(!defined(Class['::firewalld']))
@@ -19,15 +22,26 @@ class iptables  (
 
     if($iptables::params::iptablesrulesetfile!=undef)
     {
-      file { $iptables::params::iptablesrulesetfile:
+      concat { $iptables::params::iptablesrulesetfile:
         ensure  => 'present',
         owner   => 'root',
         group   => 'root',
         mode    => '0600',
-        content => template("${module_name}/sysconfig.erb"),
         notify  => Class['iptables::service'],
         require => Package[$iptables::params::iptables_pkgs],
         before  => Class['iptables::service'],
+      }
+
+      concat::fragment { "globalconf header ${apache::params::baseconf}":
+        target  => $iptables::params::iptablesrulesetfile,
+        order   => '00',
+        content => template("${module_name}/default_ruleset.erb"),
+      }
+
+      concat::fragment { "globalconf header ${apache::params::baseconf}":
+        target  => $iptables::params::iptablesrulesetfile,
+        order   => '99',
+        content => "COMMIT\n",
       }
     }
 

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.17
+
+* added support to add rules to the persistent rules 
+
 ## 0.1.16
 
 * bugfix Ubuntu 16.04 service
