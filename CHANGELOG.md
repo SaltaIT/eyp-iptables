@@ -2,7 +2,8 @@
 
 ## 0.1.17
 
-* added support to add rules to the persistent rules 
+* added support to add rules to the persistent rules
+* added IPv6 support
 
 ## 0.1.16
 
