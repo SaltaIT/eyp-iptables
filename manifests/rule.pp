@@ -7,6 +7,7 @@ define iptables::rule (
                         $order       = '42',
                         $persistent  = true,
                         $ip_version  = '4',
+                        $dport_range = undef,
                       ) {
   include ::iptables
 
