@@ -4,7 +4,8 @@ class iptables::params
   {
     'redhat' :
     {
-      $iptablesrulesetfile = '/etc/sysconfig/iptables'
+      $iptablesrulesetfile_ipv4 = '/etc/sysconfig/iptables'
+      $iptablesrulesetfile_ipv6 = undef
       $iptables_servicename = 'iptables'
 
       $service_ensure_default = 'running'
@@ -31,7 +32,8 @@ class iptables::params
     }
     'Debian':
     {
-      $iptablesrulesetfile = '/etc/iptables/rules.v4'
+      $iptablesrulesetfile_ipv4 = '/etc/iptables/rules.v4'
+      $iptablesrulesetfile_ipv6 = '/etc/iptables/rules.v6'
 
       $service_ensure_default = 'running'
       $service_enable_default = true
@@ -59,7 +61,8 @@ class iptables::params
     }
     'Suse':
     {
-      $iptablesrulesetfile = undef
+      $iptablesrulesetfile_ipv4 = undef
+      $iptablesrulesetfile_ipv6 = undef
       $iptables_servicename = 'SuSEfirewall2_setup'
 
       $service_ensure_default = 'stopped'
