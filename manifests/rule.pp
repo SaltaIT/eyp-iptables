@@ -14,11 +14,6 @@ define iptables::rule (
                       ) {
   include ::iptables
 
-  if($iptables::params::iptablesrulesetfile==undef)
-  {
-    fail('currently unsupported')
-  }
-
   if(!$persistent)
   {
     fail('currently unsupported')
