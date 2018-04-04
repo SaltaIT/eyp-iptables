@@ -2,7 +2,7 @@ define iptables::rule (
                         $description = $name,
                         $chain       = 'INPUT',
                         $target      = 'REJECT',
-                        $protocol    = undef,
+                        $protocols   = [ 'tcp', 'udp' ],
                         $dport       = undef,
                         $order       = '42',
                         $persistent  = true,
