@@ -109,9 +109,9 @@ COMMIT
 * **logrotate_missingok**: true,
 * **logrotate_notifempty**: true,
 * **logrotate_frequency**: 'weekly',
-* **default_input**:  'ACCEPT',
-* **default_forward**: 'ACCEPT',
-* **default_output**: 'ACCEPT',
+* **default_input**:  default target for INPUT chain (default: ACCEPT)
+* **default_forward**: default target for FORWARD chain (default: ACCEPT)
+* **default_output**: default target for OUTPUT chain (default: ACCEPT)
 
 ## Limitations
 
