@@ -1,7 +1,3 @@
-# - Allow ssh connections
-# - Allow HTTPS
-# - Allow communication between the 3 VM with TCP and UDP protocols on the port range 9300 to 9400.
-# - Allow communication with 192.168.188.142 with TCP protocol on port 9200), this 3 VM must communicate with the VIP elasticsearch-eupp (IP: 192.168.188.142 ).
 define iptables::rule (
                         $description = $name,
                         $chain       = 'INPUT',
