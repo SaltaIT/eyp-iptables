@@ -50,7 +50,7 @@ define iptables::rule (
 
   concat::fragment { "iptables (${persistent}) rule ${order} ${chain} ${protocol} ${dport} ${target}":
     target  => $target_file,
-    order   => "01-${chain}-${order}",
+    order   => "10-${chain}-${order}",
     content => template("${module_name}/rule.erb"),
   }
 
