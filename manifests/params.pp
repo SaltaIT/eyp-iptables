@@ -4,8 +4,6 @@ class iptables::params
   {
     'redhat' :
     {
-      $iptablesrulesetfile_ipv4 = '/etc/sysconfig/iptables'
-      $iptablesrulesetfile_ipv6 = undef
       $iptables_servicename = 'iptables'
 
       $service_ensure_default = 'running'
@@ -15,14 +13,20 @@ class iptables::params
         /^5.*$/:
         {
           $iptables_pkgs = [ 'iptables' ]
+          $iptablesrulesetfile_ipv4 = '/etc/sysconfig/iptables'
+          $iptablesrulesetfile_ipv6 = undef
         }
         /^6.*$/:
         {
           $iptables_pkgs = [ 'iptables' ]
+          $iptablesrulesetfile_ipv4 = '/etc/sysconfig/iptables'
+          $iptablesrulesetfile_ipv6 = undef
         }
         /^7.*$/:
         {
           $iptables_pkgs = [ 'iptables', 'iptables-services' ]
+          $iptablesrulesetfile_ipv4 = '/etc/sysconfig/iptables'
+          $iptablesrulesetfile_ipv6 = '/etc/sysconfig/ip6tables'
         }
         default:
         {
