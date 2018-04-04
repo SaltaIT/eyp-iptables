@@ -48,7 +48,7 @@ define iptables::rule (
 
 
 
-  concat::fragment { "iptables (${persistent}) rule ${order} ${chain} ${protocol} ${dport} ${target}":
+  concat::fragment { "iptables (${persistent}) rule ${order} ${chain} ${protocols} ${dport} ${target}":
     target  => $target_file,
     order   => "10-${chain}-${order}",
     content => template("${module_name}/rule.erb"),
