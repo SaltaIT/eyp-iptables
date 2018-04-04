@@ -1,5 +1,5 @@
 # <%= @description %>
--A <%= @chain %><% -%>
-<% if defined?(@protocol) %> -p <%= @protocol %> -m <%= @protocol -%>
-<% if defined?(@dport) %> --dport <%= @dport -%>
+-A <%= @chain -%>
+<% if defined?(@protocol) %> -p <%= @protocol %> -m <%= @protocol %><% end -%>
+<% if defined?(@dport) %> --dport <%= @dport %><% end -%>
  -j <%= @target %>
