@@ -32,13 +32,13 @@ class iptables  (
         before  => Class['iptables::service'],
       }
 
-      concat::fragment { "globalconf header ${apache::params::baseconf}":
+      concat::fragment { "default ruleset ${iptables::params::iptablesrulesetfile}":
         target  => $iptables::params::iptablesrulesetfile,
         order   => '00',
         content => template("${module_name}/default_ruleset.erb"),
       }
 
-      concat::fragment { "globalconf header ${apache::params::baseconf}":
+      concat::fragment { "commit  ${iptables::params::iptablesrulesetfile}":
         target  => $iptables::params::iptablesrulesetfile,
         order   => '99',
         content => "COMMIT\n",
