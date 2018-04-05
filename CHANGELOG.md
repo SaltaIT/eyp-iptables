@@ -4,6 +4,7 @@
 
 * added support to add rules to the persistent rules files
 * added IPv6 support
+* removed rspec testing
 
 ## 0.1.16
 
