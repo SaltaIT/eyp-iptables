@@ -96,12 +96,20 @@ ruleset created:
 -A INPUT -p tcp --match multiport --dports 9300:9400 -j ACCEPT
 -A INPUT -p udp --match multiport --dports 9300:9400 -j ACCEPT
 
-# Allow tcp/22
--A INPUT -p tcp --dport 22 -j ACCEPT
+# dst test
+-A INPUT -p tcp -d 1.1.1.1 -j ACCEPT
+-A INPUT -p udp -d 1.1.1.1 -j ACCEPT
+
+# inverse dst test
+-A INPUT -p tcp ! -s 1.0.0.1 -j ACCEPT
+-A INPUT -p udp ! -s 1.0.0.1 -j ACCEPT
 
 # Allow udp/53 and tcp/53
 -A INPUT -p tcp --dport 53 -j ACCEPT
 -A INPUT -p udp --dport 53 -j ACCEPT
+
+# Allow tcp/22
+-A INPUT -p tcp --dport 22 -j ACCEPT
 
 COMMIT
 ```
@@ -123,6 +131,22 @@ COMMIT
 * **default_input**:  default target for INPUT chain (default: ACCEPT)
 * **default_forward**: default target for FORWARD chain (default: ACCEPT)
 * **default_output**: default target for OUTPUT chain (default: ACCEPT)
+
+### iptables::rule
+
+* **description**: rule description (default: resource name)
+* **chain**: chain to insert the rule to (default: INPUT)
+* **target**: target for rule (default: REJECT)
+* **protocols**: list of protocols (default: 'tcp', 'udp')
+* **dport**: destination port (default: undef)
+* **order**: rule order (default: 42)
+* **persistent**: is this rule persistent (default: true)
+* **ip_version**: IP version (default: 4)
+* **dport_range**: destination port range (default: undef)
+* **source_addr**: source address (default: undef)
+* **inverse_source_addr**: use inverse match for source address (default: false)
+* **destination_addr**: destination address (default: undef)
+* **inverse_destination_addr**: use inverse match for destination address (default: false)
 
 ## Limitations
 
