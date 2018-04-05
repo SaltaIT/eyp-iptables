@@ -2,5 +2,7 @@
 <% @protocols.each do |protocol| -%>
 -A <%= @chain -%> -p <%= protocol -%>
 <% if defined?(@dport) %> --dport <%= @dport %><% elsif defined?(@dport_range) %> --match multiport --dports <%= @dport_range %><% end -%>
+<% if defined?(@source_addr) %> <% if @inverse_source_addr %>! <% end %>-s <%= @source_addr %><% end -%>
+<% if defined?(@destination_addr) %> <% if @inverse_destination_addr %>! <% end %>-d <%= @destination_addr %><% end -%>
  -j <%= @target %>
 <% end %>

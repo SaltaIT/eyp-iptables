@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.18
+
+* added support for source and destination addresses in iptables rules
+
 ## 0.1.17
 
 * added support to add rules to the persistent rules
