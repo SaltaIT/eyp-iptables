@@ -56,5 +56,4 @@ define iptables::rule (
     content => template("${module_name}/rule.erb"),
   }
 
-
 }
