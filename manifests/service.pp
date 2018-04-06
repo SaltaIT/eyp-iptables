@@ -4,7 +4,9 @@ class iptables::service (
                           $manage_docker_service = false,
                           $manage_service        = true,
                         ) inherits iptables::params {
-  if(!defined(Class['firewalld']))
+                          
+  $firewalld_status_var=getvar('::eyp_firewalld_status')
+  if($firewalld_status_var==undef) or ($::eyp_firewalld_status!='0')
   {
     validate_bool($manage_docker_service)
     validate_bool($manage_service)
