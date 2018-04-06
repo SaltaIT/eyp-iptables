@@ -14,7 +14,8 @@ class iptables  (
                   $default_output        = 'ACCEPT',
                 ) inherits iptables::params {
 
-  if($::eyp_firewalld_status==undef) or ($::eyp_firewalld_status!='0')
+  $firewalld_status_var=getvar('::eyp_firewalld_status')
+  if($firewalld_status_var==undef) or ($::eyp_firewalld_status!='0')
   {
     package { $iptables::params::iptables_pkgs:
       ensure => 'installed',
