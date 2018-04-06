@@ -147,6 +147,7 @@ COMMIT
 * **inverse_source_addr**: use inverse match for source address (default: false)
 * **destination_addr**: destination address (default: undef)
 * **inverse_destination_addr**: use inverse match for destination address (default: false)
+* **states**: Array, stateful firewall states (default: [])
 
 ## Limitations
 
