@@ -2,7 +2,7 @@
 
 ## 0.1.21
 
-* added support for interface and target options to **iptables::rule**
+* added support for interface and reject-with options to **iptables::rule**
 
 ## 0.1.20
 
