@@ -89,7 +89,7 @@ iptables::rule { 'reject not local tcp/23':
   target            => 'REJECT',
   interface         => 'lo',
   inverse_interface => true,
-  reject_with       => [ 'icmp-port-unreachable' ],
+  reject_with       => icmp-port-unreachable,
 }
 ```
 

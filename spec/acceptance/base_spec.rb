@@ -45,7 +45,7 @@ describe 'iptables class' do
         target            => 'REJECT',
         interface         => 'lo',
         inverse_interface => true,
-        reject_with       => [ 'icmp-port-unreachable' ],
+        reject_with       => icmp-port-unreachable,
       }
 
       EOF
