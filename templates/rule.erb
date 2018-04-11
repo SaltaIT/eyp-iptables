@@ -7,5 +7,5 @@
 <% if defined?(@source_addr) %> <% if @inverse_source_addr %>! <% end %>-s <%= @source_addr %><% end -%>
 <% if defined?(@destination_addr) %> <% if @inverse_destination_addr %>! <% end %>-d <%= @destination_addr %><% end -%>
 <% if @states.any? %> -m state --state <%= @states.join(',') %><% end -%>
- -j <%= @target %><% if @target_options.any? %><%= @target_options.join(' ') %>
+ -j <%= @target %><% if @target_options.any? %><%= @target_options.join(' ') %><% end %>
 <% end %>
