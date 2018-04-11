@@ -1,9 +1,11 @@
 # <%= @description %>
 <% @protocols.each do |protocol| -%>
--A <%= @chain -%> -p <%= protocol -%>
+-A <%= @chain -%>
+<% if defined?(@interface) <% if @inverse_interface %>! <% end %>-i <%= @interface %><% end -%>
+ -p <%= protocol -%>
 <% if defined?(@dport) %> --dport <%= @dport %><% elsif defined?(@dport_range) %> --match multiport --dports <%= @dport_range %><% end -%>
 <% if defined?(@source_addr) %> <% if @inverse_source_addr %>! <% end %>-s <%= @source_addr %><% end -%>
 <% if defined?(@destination_addr) %> <% if @inverse_destination_addr %>! <% end %>-d <%= @destination_addr %><% end -%>
 <% if @states.any? %> -m state --state <%= @states.join(',') %><% end -%>
- -j <%= @target %>
+ -j <%= @target %><% if @target_options.any? %><%= @target_options.join(' ') %>
 <% end %>

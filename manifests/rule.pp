@@ -2,6 +2,7 @@ define iptables::rule (
                         $description              = $name,
                         $chain                    = 'INPUT',
                         $target                   = 'REJECT',
+                        $target_options           = [],
                         $protocols                = [ 'tcp', 'udp' ],
                         $dport                    = undef,
                         $order                    = '42',
@@ -11,6 +12,8 @@ define iptables::rule (
                         $source_addr              = undef,
                         $inverse_source_addr      = false,
                         $destination_addr         = undef,
+                        $interface                = undef,
+                        $inverse_interface        = false,
                         $states                   = [],
                         $inverse_destination_addr = false,
                       ) {

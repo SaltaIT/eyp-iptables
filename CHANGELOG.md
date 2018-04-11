@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.21
+
+* added support for interface and target options to **iptables::rule**
+
 ## 0.1.20
 
 * bugfix: service notification with firewalld class enabled
