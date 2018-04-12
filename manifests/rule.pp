@@ -48,7 +48,7 @@ define iptables::rule (
     }
   }
 
-  concat::fragment { "iptables rule ${order} ${chain} ${protocols} ${dport} ${target} ${inverse_source_addr} ${source_addr} ${inverse_destination_addr} ${destination_addr}":
+  concat::fragment { "iptables rule IPv${ip_version} - ${order} ${chain} ${inverse_interface} ${interface} ${protocols} ${dport} ${target} ${inverse_source_addr} ${source_addr} ${inverse_destination_addr} ${destination_addr} ${states}":
     target  => $target_file,
     order   => "10-${chain}-${order}",
     content => template("${module_name}/rule.erb"),
