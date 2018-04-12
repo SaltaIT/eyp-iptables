@@ -1,4 +1,4 @@
-# iptables
+# iptables 🎗️
 
 #### Table of Contents
 
@@ -93,7 +93,7 @@ iptables::rule { 'reject not local tcp/23':
 }
 ```
 
-ruleset created:
+created ruleset:
 
 ```
 # puppet managed file
@@ -130,16 +130,16 @@ COMMIT
 
 ### iptables
 
-* **ensure**: (default: running)
-* **enable**: (default: true)
-* **manage_docker_service**: (default: false)
-* **manage_service**: (default: true)
-* **manage_logrotate**: add logrotate config file (default: true)
-* **logrotate_rotate**: '4',
-* **logrotate_compress**: true,
-* **logrotate_missingok**: true,
-* **logrotate_notifempty**: true,
-* **logrotate_frequency**: 'weekly',
+* **ensure**: Service status (default: running)
+* **enable**: Whether or not iptables service is enabled at boot (default: true)
+* **manage_docker_service**: Whether o not to start iptables server inside a docker container (default: false)
+* **manage_service**: Whether or not the service is managed (default: true)
+* **manage_logrotate**: Add logrotate config file (default: true)
+* **logrotate_frequency**: Rotation frequency (default: weekly)
+* **logrotate_rotate**: How many rorations to keep (default: 4)
+* **logrotate_compress**: Whether o not to compress logs once rotated (default: true)
+* **logrotate_missingok**: Whether or not it is ok if the log file is missing (true)
+* **logrotate_notifempty**: Whether or not to rotate an empty file (true)
 * **default_input**:  default target for INPUT chain (default: ACCEPT)
 * **default_forward**: default target for FORWARD chain (default: ACCEPT)
 * **default_output**: default target for OUTPUT chain (default: ACCEPT)
@@ -181,7 +181,7 @@ have tests to check both presence and absence of any feature
 
 ### Contributing
 
-1. Fork it
+1. Fork it using the development fork: [jordiprats/eyp-systemd](https://github.com/jordiprats/eyp-systemd)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Added some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
