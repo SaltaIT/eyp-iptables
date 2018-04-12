@@ -94,8 +94,7 @@ class iptables  (
         missingok  => $logrotate_missingok,
         notifempty => $logrotate_notifempty,
         frequency  => $logrotate_frequency,
-      }  
+      }
     }
   }
-
 }
