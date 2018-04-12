@@ -159,7 +159,10 @@ COMMIT
 * **inverse_source_addr**: use inverse match for source address (default: false)
 * **destination_addr**: destination address (default: undef)
 * **inverse_destination_addr**: use inverse match for destination address (default: false)
+* **interface**: interface (default: undef)
+* **inverse_interface**: use inverse match for interface (default: false)
 * **states**: Array, stateful firewall states (default: [])
+* **reject_with**: If target is set to REJECT, this option modifies REJECT behaviour to send a specific ICMP message back to the source host (default: undef)
 
 ## Limitations
 
