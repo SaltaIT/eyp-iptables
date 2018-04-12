@@ -1,28 +1,22 @@
 define iptables::rule (
                         $description              = $name,
+                        $order                    = '42',
+                        $ip_version               = '4',
                         $chain                    = 'INPUT',
                         $target                   = 'REJECT',
                         $reject_with              = undef,
                         $protocols                = [ 'tcp', 'udp' ],
                         $dport                    = undef,
-                        $order                    = '42',
-                        $persistent               = true,
-                        $ip_version               = '4',
                         $dport_range              = undef,
                         $source_addr              = undef,
                         $inverse_source_addr      = false,
                         $destination_addr         = undef,
+                        $inverse_destination_addr = false,
                         $interface                = undef,
                         $inverse_interface        = false,
                         $states                   = [],
-                        $inverse_destination_addr = false,
                       ) {
   include ::iptables
-
-  if(!$persistent)
-  {
-    fail('currently unsupported')
-  }
 
   case $ip_version
   {

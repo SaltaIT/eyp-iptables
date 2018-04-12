@@ -21,7 +21,9 @@ iptables management
 
 This module is intended to manage IPv4 and IPv6 iptables rules
 
-To be able to manage logrotate files it needs **eyp-logrotate** module installed. This module is not installed as a dependency
+To be able to manage logrotate files it needs **eyp-logrotate** module installed. If you do not want to install **eyp-logrotate**, please set **iptables::manage_logrotate** to false
+
+For **SLES11SP3** it just disables iptables, ruleset management is not supported
 
 ## Setup
 
@@ -41,7 +43,7 @@ Manages:
 
 ### Setup Requirements
 
-This module requires pluginsync enabled
+This module requires pluginsync enabled for puppet < 4
 
 ### Beginning with iptables
 
@@ -152,7 +154,6 @@ COMMIT
 * **protocols**: list of protocols (default: 'tcp', 'udp')
 * **dport**: destination port (default: undef)
 * **order**: rule order (default: 42)
-* **persistent**: is this rule persistent (default: true)
 * **ip_version**: IP version (default: 4)
 * **dport_range**: destination port range (default: undef)
 * **source_addr**: source address (default: undef)

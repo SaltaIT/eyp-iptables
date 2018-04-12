@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.22
+
+* check the presence of ::logrotate if **manage_logrotate** is set to true
+
 ## 0.1.21
 
 * added support for interface and reject-with options to **iptables::rule**
