@@ -82,16 +82,19 @@ class iptables  (
 
   if($manage_logrotate)
   {
-    include ::logrotate
+    if(defined(Class[::logrotate]))
+    {
+      include ::logrotate
 
-    logrotate::logs { 'iptables':
-      ensure     => present,
-      log        => [ '/var/log/iptables.log' ],
-      rotate     => $logrotate_rotate,
-      compress   => $logrotate_compress,
-      missingok  => $logrotate_missingok,
-      notifempty => $logrotate_notifempty,
-      frequency  => $logrotate_frequency,
+      logrotate::logs { 'iptables':
+        ensure     => present,
+        log        => [ '/var/log/iptables.log' ],
+        rotate     => $logrotate_rotate,
+        compress   => $logrotate_compress,
+        missingok  => $logrotate_missingok,
+        notifempty => $logrotate_notifempty,
+        frequency  => $logrotate_frequency,
+      }  
     }
   }
 

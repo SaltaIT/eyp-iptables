@@ -1,4 +1,4 @@
-# iptables 🎗️
+# iptables
 
 #### Table of Contents
 
@@ -15,13 +15,13 @@
 
 ## Overview
 
-iptables basic management
+iptables management
 
 ## Module Description
 
 This module is intended to manage IPv4 and IPv6 iptables rules
 
-To be able to manage logrotate files it needs **eyp-logrotate**
+To be able to manage logrotate files it needs **eyp-logrotate** module installed. This module is not installed as a dependency
 
 ## Setup
 
