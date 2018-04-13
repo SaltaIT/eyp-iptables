@@ -58,15 +58,34 @@ class { 'iptables':
   manage_logrotate => false,
 }
 
-iptables::rule { 'Allow tcp/22':
-  protocols => [ 'tcp' ],
-  dport     => '22',
-  target    => 'ACCEPT',
+iptables::chain { 'DEMO':
+  description => 'demo chain',
+}
+
+iptables::rule { 'fist process the demo chain':
+  order => '01',
+  target => 'DEMO',
 }
 
 iptables::rule { 'Allow udp/53 and tcp/53':
   dport  => '53',
-  target => 'ACCEPT',
+  target => 'DEMO',
+}
+
+iptables::rule { 'Allow tcp/22':
+  protocols => [ 'tcp' ],
+  dport     => '22',
+  target    => 'DEMO',
+}
+
+iptables::rule { 'count tcp/21':
+  protocols => [ 'tcp' ],
+  dport     => '21',
+}
+
+iptables::rule { 'Allow udp/53 and tcp/53':
+  dport  => '53',
+  target => 'DEMO',
 }
 
 iptables::rule { 'multiport test':
