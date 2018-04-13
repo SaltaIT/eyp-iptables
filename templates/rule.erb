@@ -8,5 +8,7 @@
 <% if defined?(@source_addr) %> <% if @inverse_source_addr %>! <% end %>-s <%= @source_addr %><% end -%>
 <% if defined?(@destination_addr) %> <% if @inverse_destination_addr %>! <% end %>-d <%= @destination_addr %><% end -%>
 <% if @states.any? %> -m state --state <%= @states.join(',') %><% end -%>
- -j <%= @target %><% if @target == 'REJECT' %><% if defined?(@reject_with) %> --reject-with <%= @reject_with %><% end %><% end %>
+<% if defined?(@target) %> -j <%= @target %><% if @target == 'REJECT' %><% if defined?(@reject_with) %> --reject-with <%= @reject_with %><% end %><% end %><% end -%>
+<% if defined?(@goto) %> -g <%= @goto %><% end -%>
+
 <% end %>

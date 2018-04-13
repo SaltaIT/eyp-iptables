@@ -148,9 +148,10 @@ COMMIT
 
 ### iptables::rule
 
+* **target**: target for rule - Either **target** or **goto** must be defined (default: undef)
+* **goto**: This  specifies  that the processing should continue in a user specified chain. Unlike the **target** option return will not continue processing in this chain but instead in the chain that called us via **target**- Either **target** or **goto** must be defined (default: undef)
 * **description**: rule description (default: resource name)
 * **chain**: chain to insert the rule to (default: INPUT)
-* **target**: target for rule (default: REJECT)
 * **protocols**: list of protocols (default: 'tcp', 'udp')
 * **dport**: destination port (default: undef)
 * **order**: rule order (default: 42)
@@ -160,8 +161,10 @@ COMMIT
 * **inverse_source_addr**: use inverse match for source address (default: false)
 * **destination_addr**: destination address (default: undef)
 * **inverse_destination_addr**: use inverse match for destination address (default: false)
-* **interface**: interface (default: undef)
-* **inverse_interface**: use inverse match for interface (default: false)
+* **in_interface**: filter packets for incoming interface (default: undef)
+* **inverse_in_interface**: use inverse match for in interface (default: false)
+* **out_interface**: filter packets for outgoing interface (default: undef)
+* **inverse_out_interface**: use inverse match for out interface (default: false)
 * **states**: Array, stateful firewall states (default: [])
 * **reject_with**: If target is set to REJECT, this option modifies REJECT behaviour to send a specific ICMP message back to the source host (default: undef)
 

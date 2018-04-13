@@ -3,7 +3,8 @@ define iptables::rule (
                         $order                    = '42',
                         $ip_version               = '4',
                         $chain                    = 'INPUT',
-                        $target                   = 'REJECT',
+                        $target                   = undef,
+                        $goto                     = undef,
                         $reject_with              = undef,
                         $protocols                = [ 'tcp', 'udp' ],
                         $dport                    = undef,
@@ -19,6 +20,16 @@ define iptables::rule (
                         $states                   = [],
                       ) {
   include ::iptables
+
+  if($target==undef and $goto==undef)
+  {
+    fail('Neither target nor goto is defined, please use one or the other')
+  }
+
+  if($target!=undef and $goto!=undef)
+  {
+    fail('target and goto cannot be both defined, please chose one')
+  }
 
   case $ip_version
   {

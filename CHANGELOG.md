@@ -2,7 +2,9 @@
 
 ## 0.2.0
 
-* **INCOMPATIBLE CHANGE** renamed **interface** to **in_interface** and **inverse_interface** to **inverse_in_interface**
+* **INCOMPATIBLE CHANGES**:
+  - **iptables::rule**: renamed **interface** to **in_interface** and **inverse_interface** to **inverse_in_interface**
+  - **iptables::rule**: changed default target to undef
 * added **out_interface** and **inverse_out_interface**
 * check the presence of ::logrotate if **manage_logrotate** is set to true
 
