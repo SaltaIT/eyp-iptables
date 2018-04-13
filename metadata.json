@@ -1,6 +1,6 @@
 {
   "name": "eyp-iptables",
-  "version": "0.1.22",
+  "version": "0.2.0",
   "author": "eyp",
   "summary": "iptables management",
   "license": "Apache-2.0",

@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 0.1.22
+## 0.2.0
 
 * **INCOMPATIBLE CHANGE** renamed **interface** to **in_interface** and **inverse_interface** to **inverse_in_interface**
 * added **out_interface** and **inverse_out_interface**
