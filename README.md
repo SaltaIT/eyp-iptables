@@ -68,7 +68,7 @@ iptables::rule { 'fist process the demo chain':
 }
 
 iptables::rule { 'Allow udp/53 and tcp/53':
-  chain     => 'DEMO',
+  chain  => 'DEMO',
   dport  => '53',
   target => 'ACCEPT',
 }
