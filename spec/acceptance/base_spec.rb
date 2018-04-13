@@ -12,15 +12,31 @@ describe 'iptables class' do
         manage_logrotate => false,
       }
 
+      iptables::chain { 'DEMO':
+        description => 'demo chain',
+      }
+
+      iptables::rule { 'fist process the demo chain':
+        order => '01',
+        target => 'DEMO',
+      }
+
+      iptables::rule { 'Allow udp/53 and tcp/53':
+        chain  => 'DEMO',
+        dport  => '53',
+        target => 'ACCEPT',
+      }
+
       iptables::rule { 'Allow tcp/22':
+        chain     => 'DEMO',
         protocols => [ 'tcp' ],
         dport     => '22',
         target    => 'ACCEPT',
       }
 
-      iptables::rule { 'Allow udp/53 and tcp/53':
-        dport  => '53',
-        target => 'ACCEPT',
+      iptables::rule { 'count tcp/21':
+        protocols => [ 'tcp' ],
+        dport     => '21',
       }
 
       iptables::rule { 'multiport test':
@@ -40,12 +56,12 @@ describe 'iptables class' do
       }
 
       iptables::rule { 'reject not local tcp/23':
-        protocols         => [ 'tcp' ],
-        dport             => '23',
-        target            => 'REJECT',
-        interface         => 'lo',
-        inverse_interface => true,
-        reject_with       => icmp-port-unreachable,
+        protocols            => [ 'tcp' ],
+        dport                => '23',
+        target               => 'REJECT',
+        in_interface         => 'lo',
+        inverse_in_interface => true,
+        reject_with          => icmp-port-unreachable,
       }
 
       EOF
