@@ -2,6 +2,8 @@
 
 ## 0.1.22
 
+* **INCOMPATIBLE CHANGE** renamed **interface** to **in_interface** and **inverse_interface** to **inverse_in_interface**
+* added **out_interface** and **inverse_out_interface**
 * check the presence of ::logrotate if **manage_logrotate** is set to true
 
 ## 0.1.21

@@ -1,7 +1,8 @@
 # <%= @description %>
 <% @protocols.each do |protocol| -%>
 -A <%= @chain -%>
-<% if defined?(@interface) %> <% if @inverse_interface %>! <% end %>-i <%= @interface %><% end -%>
+<% if defined?(@in_interface) %> <% if @inverse_in_interface %>! <% end %>-i <%= @in_interface %><% end -%>
+<% if defined?(@out_interface) %> <% if @inverse_out_interface %>! <% end %>-o <%= @out_interface %><% end -%>
  -p <%= protocol -%>
 <% if defined?(@dport) %> --dport <%= @dport %><% elsif defined?(@dport_range) %> --match multiport --dports <%= @dport_range %><% end -%>
 <% if defined?(@source_addr) %> <% if @inverse_source_addr %>! <% end %>-s <%= @source_addr %><% end -%>
