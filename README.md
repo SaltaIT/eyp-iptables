@@ -86,12 +86,12 @@ iptables::rule { 'inverse dst test':
 }
 
 iptables::rule { 'reject not local tcp/23':
-  protocols         => [ 'tcp' ],
-  dport             => '23',
-  target            => 'REJECT',
-  interface         => 'lo',
-  inverse_interface => true,
-  reject_with       => icmp-port-unreachable,
+  protocols            => [ 'tcp' ],
+  dport                => '23',
+  target               => 'REJECT',
+  in_interface         => 'lo',
+  inverse_in_interface => true,
+  reject_with          => icmp-port-unreachable,
 }
 ```
 
