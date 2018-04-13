@@ -68,24 +68,21 @@ iptables::rule { 'fist process the demo chain':
 }
 
 iptables::rule { 'Allow udp/53 and tcp/53':
+  chain     => 'DEMO',
   dport  => '53',
-  target => 'DEMO',
+  target => 'ACCEPT',
 }
 
 iptables::rule { 'Allow tcp/22':
+  chain     => 'DEMO',
   protocols => [ 'tcp' ],
   dport     => '22',
-  target    => 'DEMO',
+  target    => 'ACCEPT',
 }
 
 iptables::rule { 'count tcp/21':
   protocols => [ 'tcp' ],
   dport     => '21',
-}
-
-iptables::rule { 'Allow udp/53 and tcp/53':
-  dport  => '53',
-  target => 'DEMO',
 }
 
 iptables::rule { 'multiport test':
