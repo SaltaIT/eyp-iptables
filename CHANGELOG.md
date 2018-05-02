@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.1
+
+* added Ubuntu 18.04 support
+
 ## 0.2.0
 
 * **INCOMPATIBLE CHANGES**:

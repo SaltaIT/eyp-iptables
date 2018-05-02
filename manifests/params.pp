@@ -45,15 +45,17 @@ class iptables::params
       {
         'Ubuntu':
         {
-          $iptables_pkgs = [ 'iptables', 'iptables-persistent' ]
+
           case $::operatingsystemrelease
           {
             /^14.*$/:
             {
+              $iptables_pkgs = [ 'iptables', 'iptables-persistent' ]
               $iptables_servicename = 'iptables-persistent'
             }
-            /^16.*$/:
+            /^1[68].*$/:
             {
+              $iptables_pkgs = [ 'iptables', 'iptables-persistent', 'netfilter-persistent' ]
               $iptables_servicename = 'netfilter-persistent'
             }
             default: { fail("Unsupported Ubuntu version! - ${::operatingsystemrelease}")  }
