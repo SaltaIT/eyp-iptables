@@ -97,4 +97,32 @@ class iptables  (
       }
     }
   }
+
+  if($iptables::params::netfilter_script!=undef)
+  {
+    file { $iptables::params::netfilter_script:
+      ensure  => 'present',
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0755',
+      content => file("${module_name}/netfilter-persistent.sh"),
+      require => Package[$iptables::params::iptables_pkgs],
+      before  => Class['iptables::service'],
+      notify  => Class['iptables::service'],
+    }
+
+    systemd::service { $iptables::params::iptables_servicename:
+      description       => 'netfilter persistent configuration',
+      before_units      => [ 'network.target' ],
+      wants             => [ 'systemd-modules-load.service', 'local-fs.target' ],
+      after_units       => [ 'systemd-modules-load.service', 'local-fs.target' ],
+      type              => 'oneshot',
+      remain_after_exit => true,
+      execstart         => "${iptables::params::netfilter_script} start",
+      execstop          => "${iptables::params::netfilter_script} stop",
+      require           => File[$iptables::params::netfilter_script],
+      before            => Class['iptables::service'],
+      notify            => Class['iptables::service'],
+    }
+  }
 }

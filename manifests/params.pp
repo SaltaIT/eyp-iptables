@@ -4,6 +4,7 @@ class iptables::params
   {
     'redhat' :
     {
+      $netfilter_script = undef
       $iptables_servicename = 'iptables'
 
       $service_ensure_default = 'running'
@@ -36,6 +37,7 @@ class iptables::params
     }
     'Debian':
     {
+      $netfilter_script = undef
       $iptablesrulesetfile_ipv4 = '/etc/iptables/rules.v4'
       $iptablesrulesetfile_ipv6 = '/etc/iptables/rules.v6'
 
@@ -67,6 +69,7 @@ class iptables::params
     }
     'Suse':
     {
+      $iptables_pkgs = [ 'iptables' ]
       case $::operatingsystem
       {
         'SLES':
@@ -75,14 +78,24 @@ class iptables::params
           {
             '11.3':
             {
+              $netfilter_script = undef
               $iptablesrulesetfile_ipv4 = undef
               $iptablesrulesetfile_ipv6 = undef
               $iptables_servicename = 'SuSEfirewall2_setup'
 
               $service_ensure_default = 'stopped'
               $service_enable_default = false
-              
-              $iptables_pkgs = [ 'iptables' ]
+            }
+            '12.3':
+            {
+              $netfilter_script = '/usr/local/sbin/netfilter-persistent.sh'
+              $iptablesrulesetfile_ipv4 = '/etc/sysconfig/iptables-rules.v4'
+              $iptablesrulesetfile_ipv6 = '/etc/sysconfig/iptables-rules.v6'
+
+              $iptables_servicename = 'netfilter-persistent'
+
+              $service_ensure_default = 'running'
+              $service_enable_default = true
             }
             default: { fail("Unsupported operating system ${::operatingsystem} ${::operatingsystemrelease}") }
           }
