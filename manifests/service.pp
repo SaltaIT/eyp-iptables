@@ -8,12 +8,6 @@ class iptables::service (
   $firewalld_status_var=getvar('::eyp_firewalld_status')
   if($firewalld_status_var==undef) or ($::eyp_firewalld_status!='0')
   {
-    validate_bool($manage_docker_service)
-    validate_bool($manage_service)
-    validate_bool($enable)
-
-    validate_re($ensure, [ '^running$', '^stopped$' ], "Not a valid daemon status: ${ensure}")
-
     $is_docker_container_var=getvar('::eyp_docker_iscontainer')
     $is_docker_container=str2bool($is_docker_container_var)
 
