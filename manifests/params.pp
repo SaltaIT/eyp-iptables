@@ -67,12 +67,6 @@ class iptables::params
     }
     'Suse':
     {
-      $iptablesrulesetfile_ipv4 = undef
-      $iptablesrulesetfile_ipv6 = undef
-      $iptables_servicename = 'SuSEfirewall2_setup'
-
-      $service_ensure_default = 'stopped'
-      $service_enable_default = false
       case $::operatingsystem
       {
         'SLES':
@@ -81,6 +75,13 @@ class iptables::params
           {
             '11.3':
             {
+              $iptablesrulesetfile_ipv4 = undef
+              $iptablesrulesetfile_ipv6 = undef
+              $iptables_servicename = 'SuSEfirewall2_setup'
+
+              $service_ensure_default = 'stopped'
+              $service_enable_default = false
+              
               $iptables_pkgs = [ 'iptables' ]
             }
             default: { fail("Unsupported operating system ${::operatingsystem} ${::operatingsystemrelease}") }
