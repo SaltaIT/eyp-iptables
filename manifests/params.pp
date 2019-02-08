@@ -86,7 +86,7 @@ class iptables::params
               $service_ensure_default = 'stopped'
               $service_enable_default = false
             }
-            '12.3':
+            /^12.[34]/:
             {
               $netfilter_script = '/usr/local/sbin/netfilter-persistent.sh'
               $iptablesrulesetfile_ipv4 = '/etc/sysconfig/iptables-rules.v4'
