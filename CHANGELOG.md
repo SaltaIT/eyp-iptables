@@ -3,6 +3,7 @@
 ## 0.2.3
 
 * added SLES 12.4 support
+* Updated metadata for **eyp-systemd 0.2.0**
 
 ## 0.2.2
 
