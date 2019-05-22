@@ -23,7 +23,7 @@ class iptables::params
           $iptablesrulesetfile_ipv4 = '/etc/sysconfig/iptables'
           $iptablesrulesetfile_ipv6 = undef
         }
-        /^7.*$/:
+        /^[78].*$/:
         {
           $iptables_pkgs = [ 'iptables', 'iptables-services' ]
           $iptablesrulesetfile_ipv4 = '/etc/sysconfig/iptables'
