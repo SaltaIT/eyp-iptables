@@ -3,6 +3,7 @@
 ## 0.2.6
 
 * Added support for Debian 10
+* **iptables::rule**: uid-owner/gid-owner support
 
 ## 0.2.5
 

@@ -7,6 +7,8 @@ define iptables::rule (
                         $goto                     = undef,
                         $reject_with              = undef,
                         $protocols                = [ 'tcp', 'udp' ],
+                        $uid_owner                = undef,
+                        $gid_owner                = undef,
                         $dport                    = undef,
                         $dport_range              = undef,
                         $source_addr              = undef,

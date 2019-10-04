@@ -4,9 +4,11 @@
 <% if defined?(@in_interface) %> <% if @inverse_in_interface %>! <% end %>-i <%= @in_interface %><% end -%>
 <% if defined?(@out_interface) %> <% if @inverse_out_interface %>! <% end %>-o <%= @out_interface %><% end -%>
  -p <%= protocol -%>
-<% if defined?(@dport) %> --dport <%= @dport %><% elsif defined?(@dport_range) %> --match multiport --dports <%= @dport_range %><% end -%>
 <% if defined?(@source_addr) %> <% if @inverse_source_addr %>! <% end %>-s <%= @source_addr %><% end -%>
 <% if defined?(@destination_addr) %> <% if @inverse_destination_addr %>! <% end %>-d <%= @destination_addr %><% end -%>
+<% if defined?(@dport) %> --dport <%= @dport %><% elsif defined?(@dport_range) %> --match multiport --dports <%= @dport_range %><% end -%>
+<% if defined?(@uid_owner) %>-m owner --uid-owner <%= @uid_owner %><% end -%>
+<% if defined?(@gid_owner) %>-m owner --gid-owner <%= @gid_owner %><% end -%>
 <% if @states.any? %> -m state --state <%= @states.join(',') %><% end -%>
 <% if defined?(@target) %> -j <%= @target %><% if @target == 'REJECT' %><% if defined?(@reject_with) %> --reject-with <%= @reject_with %><% end %><% end %><% end -%>
 <% if defined?(@goto) %> -g <%= @goto %><% end -%>
