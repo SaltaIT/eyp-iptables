@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.6
+
+* Added support for Debian 10
+
 ## 0.2.5
 
 * Added support for RHEL 8

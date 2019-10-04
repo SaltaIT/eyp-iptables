@@ -63,7 +63,18 @@ class iptables::params
             default: { fail("Unsupported Ubuntu version! - ${::operatingsystemrelease}")  }
           }
         }
-        'Debian': { fail('Unsupported')  }
+        'Debian':
+        {
+          case $::operatingsystemrelease
+          {
+            /^10\..*$/:
+            {
+              $iptables_pkgs = [ 'iptables', 'iptables-persistent', 'netfilter-persistent' ]
+              $iptables_servicename = 'netfilter-persistent'
+            }
+            default: { fail("Unsupported Ubuntu version! - ${::operatingsystemrelease}")  }
+          }
+        }
         default: { fail('Unsupported Debian flavour!')  }
       }
     }
