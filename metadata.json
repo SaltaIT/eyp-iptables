@@ -1,7 +1,7 @@
 {
   "name": "eyp-iptables",
   "version": "0.2.6",
-  "author": "eyp",
+  "author": "Jordi Prats",
   "summary": "iptables management",
   "license": "Apache-2.0",
   "source": "https://github.com/SaltaIT/eyp-iptables",
